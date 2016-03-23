@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>IY 8 6 Firebase</title>
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-6">
+          <form id="login" class="form-signin">
+            <h2 class="form-signin-heading">Please login</h2>
+            <input type="text" class="form-control" name="email" placeholder="Email Address" required="" autofocus="" />
+            <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        </form>
+      </div>
+
+      <div class="col-md-6">
+        <form id="signup" class="form-signup" method="post">
+          <h2 class="form-signin-heading">No Account? Please sign up</h2>
+          <input type="text" class="form-control" name="email" placeholder="Email Address" required="" autofocus="" />
+          <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up!!!</button>
+          <p class="errorMsg"> * Please enter valid credentials</p>
+
+        </form>
+      </div>
+
+    </div>
+    <div class="row msg-tab">
+        <div class="col-md-6">
+          <form class="form-group" id="message-box">
+            <input class="form-control" rows="2" id="comment"></input>
+            <button class="btn btn-lg btn-primary btn-success" type="submit">Send Message</button>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <div class="messages"></div>
+        </div>
+    </div>
+
+
+    <script src="js/bundle.js"></script>
+  </body>
+</html>
