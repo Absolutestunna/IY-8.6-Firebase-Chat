@@ -15,17 +15,17 @@ $.fn.serializeObject = function() {
 
 $(function(){
   var formData;
-  var ref = new Firebase("https://where-art-thou.firebaseio.com");
+  var ref = new Firebase('https://where-art-thou.firebaseio.com');
   $('#signup').on('submit', function(event){
     event.preventDefault();
     var $form = $(this);
-    var formData = $form.serializeObject();
+    formData = $form.serializeObject();
     ref.createUser(formData, function(error, userData){
       if (error) {
         console.log(error);
         $('.errorMsg').show();
-      }else {
-        console.log("Successfully created user account with uid:", userData.uid);
+      } else {
+        console.log('Successfully created user account with uid:', userData.uid);
       }
     });
   });
@@ -43,27 +43,25 @@ $(function(){
     });
   });
 
-  $('#message-box').on("submit", function (e) {
-      if (e.keyCode == 13) {
-        e.preventDefault();
-        var username = formData.email;
-        console.log(username)
-        var msgs = $('#comment').val();
-        ref.push({username: username, msgs: msgs});
-      }
+  $('#message-box').on('submit', function(e){
+    if (e.keyCode === 13){
       e.preventDefault();
       var username = formData.email;
       var msgs = $('#comment').val();
       ref.push({username: username, msgs: msgs});
+      $(this).closest('form').find("input[type=text], textarea").val("");
+      $(this).closest('form').find("input[type=password], textarea").val("");
+
+    }
+    e.preventDefault();
+    var username = formData.email;
+    var msgs = $('#comment').val();
+    ref.push({username: username, msgs: msgs});
   });
   ref.on('child_added', function(snapshot){
     var message = snapshot.val();
+    console.log(message)
     $('.messages').append('<div>' + message.username + ': ' + message.msgs + '</div>');
   });
-
-
-
-
-
 
 });
